@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glass Blur Animation</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ebebeb;
+        }
+
+        .container {
+            position: relative;
+            width: 500px;
+            height: 50px;
+            overflow: hidden;
+        }
+
+        .sentence {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: hidden;
+        }
+
+        #blurEffect {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 0;
+            height: 100%;
+            backdrop-filter: blur(10px);
+            animation: slideBlur 5s forwards;
+            z-index: 1;
+            border-radius: 12.5px; /* Add rounded corners */
+        }
+
+        .new {
+            color: transparent;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typeEffect 5s steps(50) forwards 5s;
+            z-index: 2;
+        }
+
+        @keyframes slideBlur {
+            0% {
+                left: 0;
+                width: 0;
+            }
+            100% {
+                left: 0;
+                width: 100%;
+            }
+        }
+
+        @keyframes typeEffect {
+            0% {
+                width: 0;
+                color: black;
+            }
+            100% {
+                width: 100%;
+                color: black;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sentence" id="oldSentence">This is an old sentence about old real estate.</div>
+        <div class="sentence new" id="newSentence">This is a new sentence overlaying the old one.</div>
+        <div id="blurEffect"></div>
+    </div>
+</body>
+
+</html>
